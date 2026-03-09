@@ -1,0 +1,9 @@
+# Lazy.nvim lock file is intentionally committed (pins plugin versions)
+# But ignore any local/generated state
+
+# OS
+.DS_Store
+
+# Neovim session/swap files
+nvim/*.session
+nvim/spell/
