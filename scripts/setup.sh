@@ -19,6 +19,7 @@ fi
 echo "==> Installing core tools..."
 brew install \
   neovim \
+  tree-sitter-cli \
   fzf \
   ripgrep \
   fd \
@@ -29,20 +30,22 @@ brew install \
 
 echo "✓  Core tools installed"
 
-# ── Optional: install stylua (Lua formatter used by conform.nvim) ─────────
-if ! command -v stylua &>/dev/null; then
-  echo "==> Installing stylua..."
-  brew install stylua
-else
-  echo "✓  stylua already installed"
-fi
+# ── Formatters & linters ─────────────────────────────────────────────────────
+echo "==> Installing formatters & linters..."
+brew install stylua ruff tflint
 
-# ── Optional: install prettierd (JSON/YAML/Markdown formatter) ───────────
 if ! command -v prettierd &>/dev/null; then
   echo "==> Installing prettierd..."
   npm install -g @fsouza/prettierd
 else
   echo "✓  prettierd already installed"
+fi
+
+if ! command -v dotnet-csharpier &>/dev/null; then
+  echo "==> Installing csharpier..."
+  dotnet tool install -g csharpier
+else
+  echo "✓  csharpier already installed"
 fi
 
 # ── Neovim config symlink ─────────────────────────────────────────────────────

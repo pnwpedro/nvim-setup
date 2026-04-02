@@ -42,3 +42,12 @@ opt.clipboard = "unnamedplus"
 
 -- Update time (faster CursorHold, gitsigns)
 opt.updatetime = 250
+
+-- Ensure filetype detection runs for buffers opened by plugins (e.g. neo-tree)
+vim.api.nvim_create_autocmd("BufReadPost", {
+  callback = function()
+    if vim.bo.filetype == "" then
+      vim.cmd("filetype detect")
+    end
+  end,
+})
