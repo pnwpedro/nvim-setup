@@ -4,15 +4,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Neovim configuration and Mac dev environment setup. The `nvim/` directory is symlinked to `~/.config/nvim` via the setup script.
+Neovim configuration and dev environment setup for macOS and Debian. The `nvim/` directory is symlinked to `~/.config/nvim` via the setup scripts.
 
 ## Setup
 
 ```bash
-./scripts/setup.sh   # installs deps via Homebrew, symlinks nvim config
+./scripts/setup-mac.sh      # macOS — installs deps via Homebrew
+./scripts/setup-debian.sh   # Debian 12 — installs deps via apt + direct downloads
 ```
 
-The setup script installs all dependencies, symlinks the config, bootstraps plugins, and installs LSP servers automatically.
+Each setup script installs all dependencies, symlinks the config, bootstraps plugins, and installs LSP servers automatically.
 
 ## Architecture
 
