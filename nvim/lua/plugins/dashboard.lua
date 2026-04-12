@@ -93,6 +93,7 @@ return {
           columns("<ldr> t",     "Toggle terminal",    "<ldr> fd",    "Document symbols"),
           columns("gc (vis)",    "Toggle comment",     "<ldr> fD",    "Workspace symbols"),
           columns("Esc",         "Clear search hl",    "<ldr> f:",    "Command history"),
+          columns("<ldr> h",     "This cheat sheet",   "",            ""),
           "",
         },
         opts = { position = "center", hl = "AlphaKey" },
@@ -109,6 +110,8 @@ return {
       }
 
       alpha.setup(config)
+
+      vim.keymap.set("n", "<leader>h", "<cmd>Alpha<CR>", { desc = "Cheat sheet" })
 
       -- Disable folding on alpha buffer
       vim.api.nvim_create_autocmd("FileType", {
