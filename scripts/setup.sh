@@ -64,11 +64,20 @@ else
   echo "✓  Symlinked ~/.config/nvim -> $NVIM_CONFIG_SRC"
 fi
 
+# ── Neovim plugin & LSP bootstrap ────────────────────────────────────────────
+echo "==> Bootstrapping Neovim plugins and LSP servers..."
+nvim --headless \
+  -c "lua require('lazy').sync({ wait = true })" \
+  -c "MasonInstall pyright terraform-ls roslyn" \
+  -c "sleep 30" \
+  -c "qa!"
+
+echo "✓  Plugins synced and LSP servers installed"
+
 # ── Done ──────────────────────────────────────────────────────────────────────
 echo ""
 echo "✓  Setup complete!"
 echo ""
 echo "Next steps:"
-echo "  1. Open nvim — lazy.nvim will auto-install all plugins on first launch"
-echo "  2. Run :Mason to verify LSP servers (pyright, terraformls, omnisharp)"
-echo "  3. Run :TSUpdate to ensure all treesitter parsers are current"
+echo "  1. Open nvim and verify with :LspInfo in a .cs, .py, or .tf file"
+echo "  2. Run :TSUpdate to ensure all treesitter parsers are current"

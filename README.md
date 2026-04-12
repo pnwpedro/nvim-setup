@@ -13,11 +13,9 @@ cd ~/dev/nvim-setup
 The script will:
 - Install Homebrew (if missing)
 - Install Neovim, fzf, ripgrep, fd, node, python, dotnet
-- Install formatters (stylua, prettierd)
+- Install formatters (stylua, prettierd, csharpier)
 - Symlink `~/dev/nvim-setup/nvim` → `~/.config/nvim`
-
-On first `nvim` launch, lazy.nvim will auto-install all plugins.
-Then run `:Mason` to install LSP servers.
+- Bootstrap lazy.nvim plugins and Mason LSP servers (pyright, terraform-ls, roslyn)
 
 ## Structure
 
@@ -34,8 +32,8 @@ nvim/                   Neovim config
         ├── fzf.lua          Fuzzy finder
         ├── treesitter.lua   Syntax & code understanding
         ├── ui.lua           Lualine, bufferline, which-key
-        ├── editor.lua       Gitsigns, toggleterm, autopairs, comment
-        ├── lsp.lua          Mason + LSP (pyright, terraformls, omnisharp)
+        ├── editor.lua       Gitsigns, toggleterm, autopairs, comment, bufremove
+        ├── lsp.lua          Mason + LSP (pyright, terraformls, roslyn)
         ├── completion.lua   nvim-cmp + LuaSnip
         └── formatting.lua   conform.nvim + nvim-lint
 
@@ -64,6 +62,7 @@ Leader key: `<Space>`
 | `<leader>la` | Code action |
 | `<leader>lf` | Format buffer |
 | `]d` / `[d` | Next/prev diagnostic |
+| `<leader>bd` | Delete buffer (window-safe) |
 | `<leader>t` | Toggle terminal |
 
 ## LSP Servers
@@ -72,4 +71,4 @@ Leader key: `<Space>`
 |----------|--------|-----------|
 | Python | pyright | ruff |
 | Terraform | terraform-ls | terraform fmt |
-| C# | omnisharp | csharpier |
+| C# | roslyn (seblyng/roslyn.nvim) | csharpier |

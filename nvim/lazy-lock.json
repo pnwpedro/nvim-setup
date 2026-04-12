@@ -16,6 +16,7 @@
   "lualine.nvim": { "branch": "master", "commit": "47f91c416daef12db467145e16bed5bbfe00add8" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "a324581a3c83fdacdb9804b79de1cbe00ce18550" },
   "mason.nvim": { "branch": "main", "commit": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65" },
+  "mini.bufremove": { "branch": "main", "commit": "8603490905fdfa31943cf2ede7ef4475e3dbac9a" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "9d6826582a3e8c84787bd7355df22a2812a1ad59" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
   "nvim-autopairs": { "branch": "master", "commit": "59bce2eef357189c3305e25bc6dd2d138c1683f5" },
@@ -25,6 +26,7 @@
   "nvim-treesitter": { "branch": "main", "commit": "5cb05e1b0fa3c469958a2b26f36b3fe930af221c" },
   "nvim-web-devicons": { "branch": "master", "commit": "737cf6c657898d0c697311d79d361288a1343d50" },
   "plenary.nvim": { "branch": "master", "commit": "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
+  "roslyn.nvim": { "branch": "main", "commit": "f2ec6ee6384c3b611ddc817b9e78b20cd0334bbb" },
   "toggleterm.nvim": { "branch": "main", "commit": "9a88eae817ef395952e08650b3283726786fb5fb" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" }
 }

@@ -25,7 +25,7 @@ map("n", "<C-Right>", "<cmd>vertical resize +2<CR>")
 -- Buffer navigation
 map("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 map("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Next buffer" })
-map("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
+-- <leader>bd is mapped by mini.bufremove in plugins/editor.lua
 
 -- Move lines up/down in visual mode
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })

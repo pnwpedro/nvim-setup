@@ -5,6 +5,10 @@ return {
     cmd = "Mason",
     build = ":MasonUpdate",
     opts = {
+      registries = {
+        "github:mason-org/mason-registry",
+        "github:Crashdummyy/mason-registry",
+      },
       ui = {
         icons = {
           package_installed   = "✓",
@@ -23,7 +27,6 @@ return {
       ensure_installed = {
         "pyright",     -- Python
         "terraformls", -- Terraform
-        "omnisharp",   -- C#
       },
       automatic_installation = true,
     },
@@ -88,20 +91,38 @@ return {
         capabilities = capabilities,
       })
 
-      vim.lsp.config("omnisharp", {
+      vim.lsp.config("roslyn", {
         capabilities = capabilities,
-        cmd = { "omnisharp" },
         settings = {
-          FormattingOptions = {
-            EnableEditorConfigSupport = true,
+          ["csharp|background_analysis"] = {
+            dotnet_analyzer_diagnostics_scope = "fullSolution",
+            dotnet_compiler_diagnostics_scope = "fullSolution",
           },
-          RoslynExtensionsOptions = {
-            AnalyzeOpenDocumentsOnly = true,
+          ["csharp|code_lens"] = {
+            dotnet_enable_references_code_lens = true,
+          },
+          ["csharp|completion"] = {
+            dotnet_show_name_completion_suggestions = true,
+            dotnet_show_completion_items_from_unimported_namespaces = true,
+          },
+          ["csharp|symbol_search"] = {
+            dotnet_search_reference_assemblies = true,
           },
         },
       })
 
-      vim.lsp.enable({ "pyright", "terraformls", "omnisharp" })
+      vim.lsp.enable({ "pyright", "terraformls" })
+      vim.lsp.enable("omnisharp", false)
     end,
+  },
+
+  -- Roslyn LSP for C#
+  {
+    "seblyng/roslyn.nvim",
+    ft = "cs",
+    dependencies = {
+      "williamboman/mason.nvim",
+    },
+    opts = {},
   },
 }
