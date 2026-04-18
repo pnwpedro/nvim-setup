@@ -34,6 +34,9 @@ opt.undofile = true
 opt.swapfile = false
 opt.backup = false
 
+-- Load per-project `.nvim.lua` (with trust prompt)
+opt.exrc = true
+
 -- Completion
 opt.completeopt = "menu,menuone,noselect"
 

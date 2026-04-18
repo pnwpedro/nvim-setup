@@ -41,29 +41,19 @@ scripts/
 └── setup.sh            Full Mac setup script
 ```
 
-## Key Bindings
+## Per-project overrides
 
-Leader key: `<Space>`
+`opt.exrc = true` is set in `nvim/lua/config/options.lua`, so Neovim will load a `.nvim.lua` from any project root (with a one-time `:trust` prompt). Use this for repo-scoped settings that shouldn't live in the global config.
 
-| Key | Action |
-|-----|--------|
-| `<leader>e` | Toggle file explorer |
-| `<leader>ff` | Find files |
-| `<leader>fg` | Live grep |
-| `<leader>fb` | Find buffers |
-| `<leader>fw` | Grep word under cursor |
-| `<leader>fd` | Document symbols |
-| `<leader>gc` | Git commits |
-| `<leader>gs` | Git status |
-| `gd` | Go to definition |
-| `gr` | References |
-| `K` | Hover docs |
-| `<leader>lr` | Rename symbol |
-| `<leader>la` | Code action |
-| `<leader>lf` | Format buffer |
-| `]d` / `[d` | Next/prev diagnostic |
-| `<leader>bd` | Delete buffer (window-safe) |
-| `<leader>t` | Toggle terminal |
+Example — auto-select the target solution for `seblyng/roslyn.nvim` in a repo that has multiple `.sln`/`.slnx` files (otherwise you get `Multiple potential target files found` on every `.cs` open):
+
+```lua
+-- <repo-root>/.nvim.lua
+local root = vim.fs.dirname(debug.getinfo(1, "S").source:sub(2))
+vim.g.roslyn_nvim_selected_solution = root .. "/YourSolution.slnx"
+```
+
+Keep `.nvim.lua` out of the project repo — either `.gitignore` it or add to `.git/info/exclude`.
 
 ## LSP Servers
 
