@@ -3,7 +3,20 @@
 
 # OS
 .DS_Store
+Thumbs.db
 
-# Neovim session/swap files
+# Vim/Neovim artifacts
+*.swp
+*.swo
+*~
 nvim/*.session
 nvim/spell/
+.netrwhist
+
+# Per-project exrc override (see README)
+.nvim.lua
+
+# Tool-local config
+.claude/
+.vscode/
+.idea/
