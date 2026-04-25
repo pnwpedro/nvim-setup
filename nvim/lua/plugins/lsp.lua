@@ -64,7 +64,9 @@ return {
           map("gi",         vim.lsp.buf.implementation,  "Go to implementation")
           map("K",          vim.lsp.buf.hover,           "Hover docs")
           map("<C-k>",      vim.lsp.buf.signature_help,  "Signature help")
-          map("<leader>lr", vim.lsp.buf.rename,          "Rename symbol")
+          vim.keymap.set("n", "<leader>lr", function()
+            return ":IncRename " .. vim.fn.expand("<cword>")
+          end, { buffer = event.buf, expr = true, desc = "LSP: Rename symbol" })
           map("<leader>la", vim.lsp.buf.code_action,     "Code action")
           map("<leader>lf", function() vim.lsp.buf.format({ async = true }) end, "Format buffer")
           map("<leader>ld", vim.diagnostic.open_float,   "Line diagnostics")
@@ -114,6 +116,13 @@ return {
       vim.lsp.enable({ "pyright", "terraformls" })
       vim.lsp.enable("omnisharp", false)
     end,
+  },
+
+  -- Live-preview LSP rename
+  {
+    "smjonas/inc-rename.nvim",
+    cmd = "IncRename",
+    opts = {},
   },
 
   -- Roslyn LSP for C#
